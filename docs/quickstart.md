@@ -196,4 +196,80 @@ Then follow the prompts.  This will do the following:
 
 ## Convert Plugin
 
+Converting your established NPM package into a SailsJS plugin will give it a much wider audience of developers.
+
 First, we have to [install Bulkhead](quickstart.md#installation).
+
+To have an NPM package load as a SailsJS plugin, then do the following:
+
+* Create an `api` folder in your package.  This folder should contain subfolders of `models`, `services`, `policies`, `adapters`, `controllers`, `hooks`, `blueprints`, and `responses` like a SailsJS project would.
+* Create a `config` folder in your package.  This folder should contain the JavaScript files exporting JSON in the same fashion as a SailsJS project would.
+* Create a `api/services/Service.js` file that exports an object that mixes in with a Bulkhead service via `Bulkhead.service.call(this)`; ([See services](quickguide.md#services))
+* Create an `index.js` file, populated with ```require('bulkhead').plugins.register();```
+* In the `package.json`, make sure the `main` property is set to `index.js`
+
+That's it.  Once this package is installed via NPM, let's examine how to access it.
+
+Assuming your NPM package is called `TestPackage` and has the following project directory structure:
+
+```
+testPackage
+    |
+    +- api
+    |   |
+    |   +- models
+    |   |   |
+    |   |   +- Account.js
+    |   |
+    |   +- services
+    |       |
+    |       +- TestService.js
+    |       |
+    |       +- OtherService.js
+    |
+    +- config
+        |
+        +- test.js
+```
+
+We can access this NPM package as a SailsJS plugin via a service or controller method in the following fashion:
+
+```javascript
+// SailsJSProject/api/services/AppService.js
+
+var Bulkhead = require('bulkhead'),
+    testPackage = require('testPackage');
+
+module.exports = {
+
+    someMethod : function() {
+
+    	// These are all the ways to access the Account model
+        testPackage.models.account;
+        testPackage.Account;
+        sails.models['testPackage_account'];
+        global['testPackage_Account'];
+
+		// These are all the ways to access the TestService
+        testPackage.services.testservice;
+        testPackage.TestService;
+        sails.services['testPackage_testservice'];
+        global['testPackage_TestService'];
+
+        // These are all the ways to access the OtherService
+        testPackage.services.otherservice;
+        testPackage.OtherService;
+        sails.services['testPackage_otherservice'];
+        global['testPackage_OtherService'];
+        
+    }
+};
+```
+
+In the database, all tables referred to in a plugin's models will be given namespaced prefixes, so to access the table in MySQL for example:
+
+```
+SELECT * FROM testPackage_account;
+```
+
+[Read this guide for more details about plugins](plugin.md).
