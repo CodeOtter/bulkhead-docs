@@ -12,7 +12,7 @@ However, this significantly reduces the extendability and scalability of a web a
 
 But with Bulkhead, developers can modularize services and NPM packages to perform a specific task and easily install it into a SailsJS project.
 
-![](https://cloud.githubusercontent.com/assets/2237846/4219825/ecb0c0f4-38fc-11e4-832f-43d0fdb3214f.png)
+![](https://cloud.githubusercontent.com/assets/2237846/4219874/317e7802-38fd-11e4-905d-e8b1c62a0fc7.png)
 
 So, how would you like to get started? :D
 
