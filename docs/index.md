@@ -14,4 +14,10 @@ But with Bulkhead, developers can modularize services and NPM packages to perfor
 
 ![Flexible solution via Bulkhead](../assets/start3.png)
 
-So let's get [started](toc.md). :D
+So, how would you like to get started? :D
+
+* [Put all of my code into reusable services](services.md)
+* [Setup a unit testing harness with database access, fixtures, and REST testing](testing.md)
+* [Convert an NPM package into a SailsJS plugin](plugin.md)
+* [Create a brand new SailsJS plugin](plugin.md)
+* [Learn more about Bulkhead](toc.md)
