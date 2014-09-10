@@ -167,7 +167,32 @@ describe('The Testing Harness', function() {
 
 ## Create Plugin
 
+Isolating related processes to an NPM package is a common task in NodeJS.  At this time, SailsJS does not have a fairly comprehensive way to utilize NPM packages as plugins.  However, with Bulkhead, its possible to treat NPM packages as SailsJS plugins *without* having to modify SailsJS core code.
+
 First, we have to [install Bulkhead](quickstart.md#installation).
+
+Then, we change directory to your web/development root (the parent of your SailsJS project directory) and run the following:
+
+```
+wget -qO- https://raw.githubusercontent.com/CodeOtter/bulkhead/master/createPackage | bash
+```
+
+Then follow the prompts.  This will do the following:
+
+* Create a new Github repository for your SailsJS plugin.
+* Create a `master` and `develop` branch in the repository.
+* Create a `LICENSE` file.
+* Create a `README.md` stub with installation instructions.
+* Create a `.gitignore` file.
+* Create a stub test in the `test` directory.
+* Create a stub service for you in the `api/services` directory.
+* Populate the `package.json` for NPM package.
+* Install the `bulkhead`, `bulkhead-test`, and `async` packages for your new package.
+* Provide you with instructions on how to move forward when you are ready to release.
+* Configure testing for the package to be ran via `npm test`
+* Setup `index.js` to register itself in Bulkhead
+
+[Read this guide for more details about plugins](plugin.md).
 
 ## Convert Plugin
 
