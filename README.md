@@ -4,15 +4,15 @@ Bulkhead is a library for SailJS that allows a developer to compartmentalize the
 
 Traditionally, MVC patterns tend to make developers stuff as much business logic into the controller...
 
-![Traditional MVC flowchart](assets/start1.png)
+![](https://cloud.githubusercontent.com/assets/2237846/4219802/b1fd05b2-38fc-11e4-9df5-d0b2a6988120.png)
 
 However, this significantly reduces the extendability and scalability of a web application as business logic frequently needs to be accessed in an agnostic fashion.  (Web API, CLI, unit testing, reporting/mapReducing, cron, application components, etc.)
 
-![Problematic scenarios](assets/start2.png)
+![](https://cloud.githubusercontent.com/assets/2237846/4219819/e0ef23dc-38fc-11e4-883b-45a79d859186.png)
 
 But with Bulkhead, developers can modularize services and NPM packages to perform a specific task and easily install it into a SailsJS project.
 
-![Flexible solution via Bulkhead](assets/start3.png)
+![](https://cloud.githubusercontent.com/assets/2237846/4219825/ecb0c0f4-38fc-11e4-832f-43d0fdb3214f.png)
 
 So, how would you like to get started? :D
 
