@@ -147,10 +147,10 @@ Next, let's prepare our test by creating `test/account.js` and populate it with 
 var suite = require('bulkhead-test'),
     assert = require('assert');
 
-// This lifts the SailsJS application and prepares the testing harness
-suite.lift();
-  
 describe('The Testing Harness', function() {
+  // This lifts the SailsJS application and prepares the testing harness
+  suite.lift();
+
   describe('Accounts', function() {
     it('should find the fixture', function(done) {
       Account.findOneByName('Ed', function(err, result) {
@@ -164,6 +164,35 @@ describe('The Testing Harness', function() {
 ```
 
 [Read this guide for more details about testing](testing.md).
+
+## Create Project
+_(Experimental)_
+
+Bulkhead also provides a way to build a brand new SailsJS project with Bulkhead already integrated.
+
+Simply run the following:
+
+```
+wget -qO- https://raw.githubusercontent.com/CodeOtter/bulkhead/develop/createProject | bash
+```
+
+Then follow the prompts.  This will do the following:
+
+* Create a new Github repository for your SailsJS project.
+* Create a brand new SailsJS 0.10.4 application
+* Create a `master` and `develop` branch in the repository.
+* Create a `LICENSE` file.
+* Create a `README.md` stub with installation instructions.
+* Create a `.gitignore` file.
+* Create a stub test in the `test` directory.
+* Populate the `package.json` for NPM packaging.
+* Install the `bulkhead` and `bulkhead-test`, `connect-redis@1.4.5`, and `sails-mysql` packages.
+* Setup environmental configurations for `production`, `development`, and `test`.
+* Provide you with instructions on how to move forward when you are ready to release.
+* Configure testing for the project to be ran via `npm test`
+
+[Read this guide for more details about projects](project.md).
+
 
 ## Create Plugin
 
