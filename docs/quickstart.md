@@ -204,7 +204,7 @@ To have an NPM package load as a SailsJS plugin, then do the following:
 
 * Create an `api` folder in your package.  This folder should contain subfolders of `models`, `services`, `policies`, `adapters`, `controllers`, `hooks`, `blueprints`, and `responses` like a SailsJS project would.
 * Create a `config` folder in your package.  This folder should contain the JavaScript files exporting JSON in the same fashion as a SailsJS project would.
-* Create a `api/services/Service.js` file that exports an object that mixes in with a Bulkhead service via `Bulkhead.service.call(this)`; ([See services](quickguide.md#services))
+* Create a `api/services/Service.js` file that exports an object that mixes in with a Bulkhead service via `Bulkhead.service.call(this)`; ([See services](quickstart.md#services))
 * Create an `index.js` file, populated with ```require('bulkhead').plugins.register();```
 * In the `package.json`, make sure the `main` property is set to `index.js`
 
