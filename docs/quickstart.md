@@ -105,7 +105,65 @@ AccountService.getModel();
 
 ## Testing
 
-First, we have to [install Bulkhead](quickstart.md#installation).
+Quickly establishing a testing harness for your SailsJS project will help you deploy faster and smarter.  Bulkhead-Test uses the following:
+
+* [Mocha](https://github.com/visionmedia/mocha) as the test harness
+* [Barrels](https://github.com/bredikhin/barrels) for fixture loading
+* [Supertest](https://github.com/visionmedia/supertest) for REST testing
+
+First, we go to your SailsJS project directory and type:
+
+```npm install bulkhead-test --saveDev```
+
+Next, create a `test` folder and a `test/fixtures` folder in your SailsJS project directory.  Assuming we have a basic Account model in `api/models/Account.js`, let's create a new fixture  called `account.js` and populate it with:
+
+```
+[
+  {
+    "name": "Bob",
+    "email": "bob@bob.com",
+    "password": "Bob"
+  },
+  {
+    "name": "Tim",
+    "email": "tim@tim.com",
+    "password": "Tim"
+  },
+  {
+    "name": "Ed",
+    "email": "ed@ed.com",
+    "password": "Ed"
+  }
+]
+```
+
+> **NOTE:**
+> 
+> When test are ran, the account table will be cleared, and this data will be automatically inserted into the account table.
+
+Next, let's prepare our test by creating `test/account.js` and populate it with the following:
+
+```javascript
+var suite = require('bulkhead-test'),
+    assert = require('assert');
+
+// This lifts the SailsJS application and prepares the testing harness
+suite.lift();
+  
+describe('The Testing Harness', function() {
+  describe('Accounts', function() {
+    it('should find the fixture', function(done) {
+      Account.findOneByName('Ed', function(err, result) {
+        if(err) assert.fail();
+        assert.equals(result.email, 'ed@ed.com');
+        done();
+      });
+    })
+  });
+})
+```
+
+[Read this guide for more details about testing](testing.md).
 
 ## Create Plugin
 
