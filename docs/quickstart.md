@@ -113,7 +113,7 @@ Quickly establishing a testing harness for your SailsJS project will help you de
 
 First, we go to your SailsJS project directory and type:
 
-```npm install bulkhead-test --saveDev```
+```npm install bulkhead-test --save-dev```
 
 Next, create a `test` folder and a `test/fixtures` folder in your SailsJS project directory.  Assuming we have a basic Account model in `api/models/Account.js`, let's create a new fixture  called `account.js` and populate it with:
 
