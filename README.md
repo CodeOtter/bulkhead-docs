@@ -18,6 +18,7 @@ So, how would you like to get started? :D
 
 * [Put all of my code into reusable services](docs/quickstart.md#services)
 * [Setup a unit testing harness with database access, fixtures, and REST testing](docs/quickstart.md#testing)
+* [Create a brand new SailsJS application with Bulkhead and Bulkhead-Test already integrated](docs/quickstart.md#create-project)
 * [Create a brand new SailsJS plugin](docs/quickstart.md#create-plugin)
 * [Convert an NPM package into a SailsJS plugin](docs/quickstart.md#convert-plugin)
 * [Learn more about Bulkhead](docs/README.md)
