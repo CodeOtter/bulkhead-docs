@@ -2,6 +2,14 @@
 
 This guide will help you quickly integrate Bulkhead functionality into your project.
 
+* [Installation](#installation)
+* [Services](#services)
+* [Testing](#testing)
+* [Dependency Injection](#dependency-injection)
+* [Create Project](#create-project)
+* [Create Plugin](#create-plugin)
+* [Convert Plugin](#convert-plugin)
+
 ## Installation
 
 In your SailsJS project directory, type the following:
@@ -168,7 +176,7 @@ describe('The Testing Harness', function() {
 ## Dependency Injection
 _(Experimental)_
 
-Dependency Injection provides developers with a way to override internal functionality of a service without having to modify the code of that service.  For example, assuming you had a package called ``mailerPlugin`` and the main service performed mailing, it would look like this:
+By using [intravenous](https://github.com/RoyJacobs/intravenous), Bulkhead now has dependency injection.  Dependency injection provides developers with a way to override internal functionality of a service without having to modify the code of that service.  For example, assuming you had a package called ``mailerPlugin`` and the main service performed mailing, it would look like this:
 
 ```javascript
 var Mailer = require('mailerPlugin');
