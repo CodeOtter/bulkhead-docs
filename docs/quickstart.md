@@ -196,7 +196,7 @@ mailer.dispatch('to@mail.com', 'from@mail.com', 'Test body');
 
 This will override ```nodeMailer``` with ```customMailer``` in the ```mailerPlugin``` without having to branch or modify the code of the ```mailerPlugin``` itself.
 
-To create a service with such flexibility, we do the following:
+To create a service with such flexibility, we have to [install Bulkhead](quickstart.md#installation).  Then we do the following:
 
 ```javascript
 // api/services/someService.js
