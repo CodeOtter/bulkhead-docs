@@ -14,6 +14,7 @@
   * Installation
   * Configuration
   * Methods
+* Dependency Injection
 * Plugin
   * Installation
   * Configuration
