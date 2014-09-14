@@ -165,6 +165,101 @@ describe('The Testing Harness', function() {
 
 [Read this guide for more details about testing](testing.md).
 
+## Dependency Injection
+_(Experimental)_
+
+Dependency Injection provides developers with a way to override internal functionality of a service without having to modify the code of that service.  For example, assuming you had a package called ``mailerPlugin`` and the main service performed mailing, it would look like this:
+
+```javascript
+var Mailer = require('mailerPlugin');
+var mailer = new Mailer();
+mailer.dispatch('to@mail.com', 'from@mail.com', 'Test body');
+```
+
+Let's assuming that, by default, ```mailerPlugin``` used ```nodeMailer``` to handle its mailing functionality.  Now let's assume you have a library for mailing functionality called ```customMailer``` (_and it has all of the same methods as ```nodeMailer```_) and you wanted ```mailerPlugin``` to use that instead, you would do the following:
+
+```javascript
+var Mailer = require('mailerPlugin');
+var mailer = new Mailer({
+    'mailer': require('customMailer')
+});
+mailer.dispatch('to@mail.com', 'from@mail.com', 'Test body');
+```
+
+This will override ```nodeMailer``` with ```customMailer``` in the ```mailerPlugin``` without having to branch or modify the code of the ```mailerPlugin``` itself.
+
+To create a service with such flexibility, we do the following:
+
+```javascript
+// api/services/someService.js
+var Bulkhead = require('bulkhead');
+
+module.exports = Bulkhead.dic(function(container) {
+    Bulkhead.service.call(this); // Build a service as you would normally
+
+    console.log(container.get('someDep')) // This will output 7 when the service is instantiated
+}, {
+    'someDep': 7
+});
+```
+
+To instantiate that service, you'd do the following:
+
+```javascript
+var SomeService = require('./api/services/someService');
+var service = new SomeService();
+```
+
+This will output ```7``` to the console.
+
+To override the ```someDep``` dependency, you'd instantiate the service like this:
+
+```javascript
+var SomeService = require('./api/services/someService');
+var service = new SomeService({
+    'someDep': 8
+});
+```
+
+This will output ```8``` to the console.
+
+Assuming we had a service with parameters in the constructor:
+
+```javascript
+// api/services/anotherService.js
+module.exports = Bulkhead.dic(function(a, b, container) {
+	Bulkhead.service.call(this); // Build a service as you would normally
+
+	console.log(a);
+	console.log(b);
+	console.log(container.get('someDep')) // This will output 7 when the service is instantiated
+}, {
+    'someDep': 7
+});
+```
+
+We would instantiate the service and override the dependency like this:
+
+```javascript
+var SomeService = require('./api/services/anotherService');
+var service = new SomeService(6, 7, {
+    'someDep': 8
+});
+```
+
+This will output ``` 6 7 8``` to the console.
+
+However, if we didnt' want to override the dependecy, we would instantiate the service like this:
+
+```javascript
+var SomeService = require('./api/services/anotherService');
+var service = new SomeService(6, 7);
+```
+
+This will output ``` 6 7 7``` to the console.
+
+[Read this guide for more details about dependency injection](dic.md).
+
 ## Create Project
 _(Experimental)_
 
