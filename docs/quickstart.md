@@ -18,7 +18,7 @@ In your SailsJS project directory, type the following:
 npm install bulkhead
 `
 
-In the `config/bootstrap.js` file of your SailsJS project directory, replace the default `cb()` with:
+Then, in the `config/bootstrap.js` file of your SailsJS project directory, replace the default `cb()` with:
 
 ```javascript
 require('bulkhead').plugins.initialize(sails, cb);
