@@ -1,20 +1,21 @@
-* Philosophy
-* Installation
-* Configuration
-* Services
-  * Configuration
-  * Methods
-    1. create
-    1. remove
-    1. update
-    1. find
-    1. findEach
-    1. asPromise
-* Testing
-  * Installation
-  * Configuration
-  * Methods
-* Dependency Injection
-* Plugin
-  * Installation
-  * Configuration
+* [Philosophy](philosophy.md)
+* [Quick Start](quickstart.md)
+* [Installation](installation.md)
+* [Configuration](configuration.md)
+* [Services](services.md)
+  * [Configuration](services.md)
+  * [Methods](services.md)
+    1. [create](services.md)
+    1. [remove](services.md)
+    1. [update](services.md)
+    1. [find](services.md)
+    1. [findEach](services.md)
+    1. [asPromise](services.md)
+* [Testing](testing.md)
+  * [Installation](testing.md)
+  * [Configuration](testing.md)
+  * [Methods](testing.md)
+* [Dependency Injection](dic.md)
+* [Plugin](plugin.md)
+  * [Installation](plugin.md)
+  * [Configuration](plugin.md)
